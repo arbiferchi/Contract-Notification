@@ -1,0 +1,5 @@
+export const GET_CONTRACTS = "GET_CONTRACTS";
+export const LOAD_CONTRACT = "LOAD_CONTRACT";
+export const FAIL_CONTRACTS = "FAIL_CONTRACTS";
+export const GET_CONTRACT = "GET_CONTRACT";
+export const FAIL_CONTRACT = "FAIL_CONTRACT";

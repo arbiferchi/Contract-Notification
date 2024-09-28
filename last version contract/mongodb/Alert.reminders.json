@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "66872ab3a93d825a3b6ee46f"
+  },
+  "userId": {
+    "$oid": "6666f26e829ea4bbb1f19878"
+  },
+  "contractId": {
+    "$oid": "6668126196a762f4fdc176bb"
+  },
+  "reminderDate": "2024-07-11",
+  "emailSent": false,
+  "custom": true,
+  "__v": 0
+}]

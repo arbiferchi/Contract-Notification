@@ -1,0 +1,114 @@
+<div class="d-flex">
+    <!-- Left Sidebar with Simplebar -->
+    <div class="card file-manager-wrapper rounded-end-0 shadow-none pb-3 flex-shrink-0" style="width: 300px;"> <!-- Adjust width as needed -->
+        <ngx-simplebar class="h-100">
+            <div class="card-body d-flex flex-column h-100">
+                <div class="position-relative mb-4 d-flex align-items-center gap-2">
+                    <div class="flex-shrink-0 position-relative">
+                        <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-sm rounded">
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-2 border-white rounded-circle bg-success p-1">
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="text-muted mb-2">Welcome to the file manager</p>
+                        <a href="javascript:void(0);" class="stretched-link">
+                            <h6 class="fs-md mb-0">Silene Oliveira</h6>
+                        </a>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <dropzone [message]="'Drop files here or click to upload.'" class="border border-1 border-dashed border-primary text-center dz-clickable"></dropzone>
+                </div>
+                <!-- File Upload Button -->
+                <input type="file" (change)="onFileSelected($event)" class="form-control">
+            </div>
+        </ngx-simplebar>
+    </div>
+    <!-- Right Table Section -->
+    <div class="flex-grow-1 p-3">
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center g-2">
+                    <div class="col-xl-2 col-md-3">
+                        <div class="search-box">
+                            <!-- Optional search box or other elements -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                    <thead class="text-muted table-light">
+                        <tr>
+                            <th>
+                                <div class="form-check checkbox-product-list">
+                                    <input class="form-check-input" type="checkbox" value="1" id="checkbox-1">
+                                    <label class="form-check-label" for="checkbox-1"></label>
+                                </div>
+                            </th>
+                            <th scope="col" class="sort cursor-pointer" (click)="onSort('icon')">Type</th>
+                            <th scope="col" class="sort cursor-pointer" (click)="onSort('title')">Document Name</th>
+                            <th scope="col" class="sort cursor-pointer" (click)="onSort('item')">File Item</th>
+                            <th scope="col" class="sort cursor-pointer" (click)="onSort('mb')">Size</th>
+                            <th scope="col" class="sort cursor-pointer" (click)="onSort('date')">Last Modified</th>
+                            <th scope="col" class="sort cursor-pointer">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list" id="file-list">
+                        <tr *ngFor="let doc of documents; let i = index">
+                            <th>
+                                <div class="form-check checkbox-product-list">
+                                    <input class="form-check-input" type="checkbox" [value]="doc._id" id="checkbox-{{i}}">
+                                    <label class="form-check-label" for="checkbox-{{i}}"></label>
+                                </div>
+                            </th>
+                            <td class="docs_type">
+                                <!-- Icon for document type -->
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-file-earmark-text fs-4 text-primary me-2"></i> <!-- Example blue icon -->
+                                    {{ doc.contentType }}
+                                </div>
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" class="text-reset document_name">{{ doc.fileName }}</a>
+                            </td>
+                            <td class="file_item">{{ doc.contentType }}</td>
+                            <td class="size">{{ doc.size | number }} bytes</td>
+                            <td class="date">{{ doc.createdAt | date:'short' }}</td>
+                            <td>
+                                <div dropdown class="dropdown">
+                                    <button dropdownToggle class="btn btn-subtle-secondary btn-sm dropdown" type="button">
+                                        <i class="ri-more-fill align-middle"></i>
+                                    </button>
+                                    <ul *dropdownMenu class="dropdown-menu dropdown-menu-end">
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:void(0);" (click)="onDownload(doc._id)">
+                                                <i class="ri-download-fill align-bottom me-2 text-muted"></i>Download
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:void(0);" >
+                                                <i class="ri-eye-fill align-bottom me-2 text-muted"></i>View
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item edit-item-btn" href="javascript:void(0);">
+                                                <i class="ri-pencil-fill align-bottom me-2 text-muted"></i>Edit
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:void(0);">
+                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

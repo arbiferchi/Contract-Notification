@@ -1,0 +1,135 @@
+[{
+  "_id": {
+    "$oid": "665d7a69535b01803ae358b6"
+  },
+  "userId": {
+    "$oid": "665d67c18edcdc6013bea57d"
+  },
+  "supplierId": {
+    "$oid": "66557a570f1983c41d939598"
+  },
+  "name": "electricity",
+  "description": "electricity_contractor",
+  "startDate": {
+    "$date": "2024-06-29T00:00:00.000Z"
+  },
+  "dueDate": {
+    "$date": "2024-07-22T00:00:00.000Z"
+  },
+  "__v": 0,
+  "docId": {
+    "$oid": "665dc147c0c87596198db29e"
+  }
+},
+{
+  "_id": {
+    "$oid": "66606eb463ab47331ed34fc4"
+  },
+  "userId": {
+    "$oid": "665d7844ddb98bc2bdf71c6b"
+  },
+  "supplierId": {
+    "$oid": "6655dcc8d483dfa86cc0d1d7"
+  },
+  "name": "electricity",
+  "description": "electricity_contractor",
+  "startDate": {
+    "$date": "2024-06-29T00:00:00.000Z"
+  },
+  "dueDate": {
+    "$date": "2024-07-22T00:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666072f9cb78328459f8c458"
+  },
+  "userId": {
+    "$oid": "666070ddffe8c2832696497e"
+  },
+  "supplierId": {
+    "$oid": "6655dd87d483dfa86cc0d1dd"
+  },
+  "name": "electricity",
+  "description": "electricity_contractor",
+  "startDate": {
+    "$date": "2024-06-29T00:00:00.000Z"
+  },
+  "dueDate": {
+    "$date": "2024-07-22T00:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666161a31bb7674eeb811e01"
+  },
+  "userId": {
+    "$oid": "666160e71bb7674eeb811dfd"
+  },
+  "supplierId": {
+    "$oid": "66557a570f1983c41d939598"
+  },
+  "name": "water",
+  "description": "water_contractor",
+  "startDate": {
+    "$date": "2024-06-29T00:00:00.000Z"
+  },
+  "dueDate": {
+    "$date": "2024-07-22T00:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "666704269ac87f447d72fceb"
+  },
+  "userId": {
+    "$oid": "6666f26e829ea4bbb1f19878"
+  },
+  "supplierId": {
+    "$oid": "66557a570f1983c41d939598"
+  },
+  "name": "water",
+  "description": "test",
+  "startDate": {
+    "$date": "1970-01-01T05:37:20.629Z"
+  },
+  "dueDate": {
+    "$date": "2024-07-22T00:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6668126196a762f4fdc176bb"
+  },
+  "userId": {
+    "$oid": "6666f26e829ea4bbb1f19878"
+  },
+  "supplierId": {
+    "$oid": "66557a570f1983c41d939598"
+  },
+  "name": "water",
+  "description": "test",
+  "startDate": "2024-06-29",
+  "dueDate": "2024-07-22",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66790f1106abba41038e0faf"
+  },
+  "userId": {
+    "$oid": "6666f26e829ea4bbb1f19878"
+  },
+  "supplierId": {
+    "$oid": "66557a570f1983c41d939598"
+  },
+  "name": "paper",
+  "description": "test",
+  "startDate": "2024-06-30",
+  "dueDate": "2024-07-22",
+  "__v": 0
+}]

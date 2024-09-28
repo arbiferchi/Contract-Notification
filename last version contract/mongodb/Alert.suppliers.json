@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "66557a570f1983c41d939598"
+  },
+  "fullname": "alpha",
+  "email": "alpha@gmail.com",
+  "tel": 999999999,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6655dcc8d483dfa86cc0d1d7"
+  },
+  "fullname": "xman",
+  "email": "xman@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6655dd87d483dfa86cc0d1dd"
+  },
+  "fullname": "yman",
+  "email": "yman@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6655ddb3d483dfa86cc0d1e1"
+  },
+  "fullname": "zman",
+  "email": "zman@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6655debcd483dfa86cc0d1e5"
+  },
+  "fullname": "nman",
+  "email": "nman@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6655deffb0f3e0ab2ee50f64"
+  },
+  "fullname": "fman",
+  "email": "fman@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665d79f6d7eb7db1f836a761"
+  },
+  "fullname": "company",
+  "email": "company@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665dc5b3805c43ea2724efd1"
+  },
+  "fullname": "company2",
+  "email": "company2@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665dc5ec3d475d6b06729449"
+  },
+  "fullname": "company3",
+  "email": "company3@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665dce91bf0888a058448da3"
+  },
+  "fullname": "company4",
+  "email": "company4@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "665dcefb025ce0d13489ad68"
+  },
+  "fullname": "company5",
+  "email": "company5@gmail.com",
+  "tel": 55555555,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6686ab7464dfda8869d6e3de"
+  },
+  "fullname": "assist digital",
+  "email": "assist@gmail.com",
+  "tel": 54359933,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66895a597d75db999645a052"
+  },
+  "fullname": "nvidia",
+  "email": "nvidia@gmail.com",
+  "tel": 54359933,
+  "__v": 0
+}]

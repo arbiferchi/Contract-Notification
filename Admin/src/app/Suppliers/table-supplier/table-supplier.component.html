@@ -1,0 +1,160 @@
+<!-- Supplier Table -->
+ <!-- User Table -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title mb-0">LIST SUPPLIERS</h4>
+
+        <!-- Optional Header Content -->
+
+        <!-- Filter Dropdown -->
+        <select (change)="filterSuppliers($event)">
+          <option value="all">All</option>
+          <option value="societe">Company</option>
+          <option value="contact">Contact</option>
+        </select>
+      </div>
+      <!-- end card header -->
+      <table class="table table-borderless align-middle table-nowrap mb-0">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Type</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let supplier of filteredSuppliers">
+            <td>{{ supplier.name }}</td>
+            <td>{{ supplier.email }}</td>
+            <td>{{ supplier.phone }}</td>
+            <td>{{ supplier.type }}</td>
+            <td>
+             
+                <div class="d-flex gap-2">
+                  <div class="d-flex gap-2">
+                    <a href="javascript:void(0);" *ngIf="supplier.type === 'societe'" (click)="showContacts(supplier)" class="btn btn-subtle-primary btn-icon btn-sm">
+                      <i class="ph-eye"></i>
+                    </a>
+                  <div class="hstack gap-3 fs-base">
+                    <a href="javascript:void(0);" (click)="openEditModal(supplier)" class="link-primary">
+                      <i class="ri-settings-4-line"></i>
+                    </a>
+                    <a href="javascript:void(0);"*ngIf="supplier._id" (click)="confirmDelete(supplier._id!)" class="link-danger">
+                      <i class="ri-delete-bin-5-line"></i>
+                    </a>
+                  </div>
+                  </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Supplier Modal -->
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isModalVisible}" (click)="closeModal()">
+  <div class="modal-dialog" role="document" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Supplier</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="updateSupplier()">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" formControlName="name">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" formControlName="email">
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" formControlName="phone">
+          </div>
+          <div>
+            <label for="address">Address</label>
+            <input id="address" formControlName="address">
+          </div>
+          <div formGroupName="companyDetails" *ngIf="editForm.get('type')?.value === 'societe'">
+            <div>
+              <label for="industry">Industry</label>
+              <input id="industry" formControlName="industry">
+            </div>
+            <div>
+              <label for="registrationNumber">Registration Number</label>
+              <input id="registrationNumber" formControlName="registrationNumber">
+            </div>
+            <div>
+              <label for="website">Website</label>
+              <input id="website" formControlName="website">
+            </div>
+          </div>
+          <div formGroupName="contactDetails" *ngIf="editForm.get('type')?.value === 'contact'">
+            <div>
+              <label for="position">Position</label>
+              <input id="position" formControlName="position">
+            </div>
+            <div>
+              <label for="department">Department</label>
+              <input id="department" formControlName="department">
+            </div>
+            
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contacts Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" [ngClass]="{'show': isContactsModalVisible}" (click)="closeContactsModal()">
+  <div class="modal-dialog modal-lg" role="document" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Supplier Contacts</h5>
+        <button type="button" class="close text-white" aria-label="Close" (click)="closeContactsModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let contact of contacts">
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeContactsModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

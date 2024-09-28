@@ -1,0 +1,901 @@
+{
+	"info": {
+		"_postman_id": "0a817981-5295-43a3-9267-d6aea075329b",
+		"name": "ContactAlert Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27874609"
+	},
+	"item": [
+		{
+			"name": "API requests",
+			"item": [
+				{
+					"name": "suppliers",
+					"item": [
+						{
+							"name": "add supplier",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"company5\",\r\n    \"email\":\"company5@gmail.com\",\r\n    \"tel\": 55555555\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/suppliers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "all suppliers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/suppliers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete supplier",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/suppliers/6655d83ad483dfa86cc0d1cd",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"suppliers",
+										"6655d83ad483dfa86cc0d1cd"
+									],
+									"query": [
+										{
+											"key": "66557a6b0f1983c41d93959a",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Supplier",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fullname\":\"Theta\",\r\n    \"email\":\"theta@gmail.com\",\r\n    \"tel\": 55555555\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/suppliers/6655d83ad483dfa86cc0d1cd",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"suppliers",
+										"6655d83ad483dfa86cc0d1cd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Supplier by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1122/api/suppliers/66557a570f1983c41d939598",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1122",
+									"path": [
+										"api",
+										"suppliers",
+										"66557a570f1983c41d939598"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "contracts",
+					"item": [
+						{
+							"name": "add contract",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var template = `\r",
+											"<style type=\"text/css\">\r",
+											"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+											"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+											"    .tftable tr {background-color:#ffffff;}\r",
+											"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+											"    .tftable tr:hover {background-color:#e0ffff;}\r",
+											"</style>\r",
+											"\r",
+											"<table class=\"tftable\" border=\"1\">\r",
+											"    <tr>\r",
+											"        <th>Message</th>\r",
+											"    </tr>\r",
+											"    <tr>\r",
+											"        <td>{{response.msg}}</td>\r",
+											"    </tr>\r",
+											"</table>\r",
+											"`;\r",
+											"\r",
+											"function constructVisualizerPayload() {\r",
+											"    return {response: pm.response.json()}\r",
+											"}\r",
+											"\r",
+											"pm.visualizer.set(template, constructVisualizerPayload());"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjZmMjZlODI5ZWE0YmJiMWYxOTg3OCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE5MjA5NjMxLCJleHAiOjE3MTkyMTMyMzF9.llxfig5_G8noRb3aXtywAIZh_EEPA2SssKP-tB4U6h8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplierId\":\"66557a570f1983c41d939598\",\r\n    \"name\":\"paper\",\r\n    \"description\":\"test\",\r\n    \"startDate\":\"2024-06-30\",\r\n    \"dueDate\":\"2024-07-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/contracts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"contracts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get contracts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/contracts",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"contracts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete contract",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/contracts/665dd03d025ce0d13489ad6d",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"contracts",
+										"665dd03d025ce0d13489ad6d"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update Contract",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjA3MGRkZmZlOGMyODMyNjk2NDk3ZSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE3NjU1MzE5LCJleHAiOjE3MTc2NTg5MTl9.cvq8xcOArJyCyKYl8F1GomSMLZQr7Crie6P9VnxZ4CA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\":\"666070ddffe8c2832696497e\",\r\n    \"supplierId\":\"6655dd87d483dfa86cc0d1dd\",\r\n    \"name\":\"gaz\",\r\n    \"description\":\"gaz_contractor\",\r\n    \"startDate\":\"2024-06-29\",\r\n    \"dueDate\":\"2024-07-22\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/contracts/665d7a69535b01803ae358b6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"contracts",
+										"665d7a69535b01803ae358b6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Contract by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1122/api/contracts/665d7a69535b01803ae358b6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1122",
+									"path": [
+										"api",
+										"contracts",
+										"665d7a69535b01803ae358b6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Doc",
+					"item": [
+						{
+							"name": "add Doc",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjE2MGU3MWJiNzY3NGVlYjgxMWRmZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE3NjU3ODU1LCJleHAiOjE3MTc2NjE0NTV9.EXvvML7x22sTSHe3HcjTvu_STYr2DETLlnqD_BXzyLE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "contractId",
+											"value": "666161a31bb7674eeb811e01",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/crunc/Downloads/Documents/CV Amine updated.pdf"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/docs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"docs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete Doc",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/docs/665da98ef4a5bf82cd66a008",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"docs",
+										"665da98ef4a5bf82cd66a008"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetallDocs",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/docs",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"docs"
+									],
+									"query": [
+										{
+											"key": "file",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Doc by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:1122/api/docs/665dc147c0c87596198db29e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "1122",
+									"path": [
+										"api",
+										"docs",
+										"665dc147c0c87596198db29e"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Reminder",
+					"item": [
+						{
+							"name": "reminders to be sent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/reminders/send-reminders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reminders",
+										"send-reminders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add custom reminder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userID\" : \"6666f26e829ea4bbb1f19878\",\r\n    \"contractID\" : \"6668126196a762f4fdc176bb\",\r\n    \"reminderDate\" : \"\",\r\n    \"custom\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/reminders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reminders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete custom reminder",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/reminders/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reminders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update custom reminder",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/reminders/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reminders",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all reminders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/reminders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"reminders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjAzMzA2NDE4MjQ2ZDJiMzE1MWM3MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMDQzNjY3MCwiZXhwIjoxNzIwNjk1ODcwfQ.dARoRa1qNzvizmVe-chleCSJWVpfyF1qlJZAn0h-HQU",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjAzMzA2NDE4MjQ2ZDJiMzE1MWM3MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzY1Nzc1NiwiZXhwIjoxNzE3NjYxMzU2fQ.nGYqOyIRVJAMG6ZVU1sJ9HKZCfdWwGvK_lPQsQqhZ1w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/users/665d7844ddb98bc2bdf71c6b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"665d7844ddb98bc2bdf71c6b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjE2MGU3MWJiNzY3NGVlYjgxMWRmZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE3NjYzMzA1LCJleHAiOjE3MTc2NjY5MDV9.mEwqv61f3fuMPIGTqAYxyOyBJMg2qxq_fxKLpfPTVBk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Mohamed Amine\",\r\n    \"lastName\" : \"amri\", \r\n    \"email\" : \"amine@gmail.com\",  \r\n    \"password\" : \"amine24\",\r\n    \"role\" : \"user\", \r\n    \"tel\":54359933\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/666160e71bb7674eeb811dfd",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"666160e71bb7674eeb811dfd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjAzMzA2NDE4MjQ2ZDJiMzE1MWM3MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMDQzNjg2MywiZXhwIjoxNzIwNjk2MDYzfQ.td3C-QLngZpgm8L-9XznoYXLjaoMgl85hPtE513eDT0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWQ3ODQ0ZGRiOThiYzJiZGY3MWM2YiIsInJvbGUiOiJJVCIsImlhdCI6MTcxNzU5NTU3MSwiZXhwIjoxNzE3NTk5MTcxfQ.9aN3TksZyEDXiCSbqbh5bakyuf5Ry1_yWM-NKYjivqk",
+								"value": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjZmMjZlODI5ZWE0YmJiMWYxOTg3OCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzIwMDQ4MzUwLCJleHAiOjE3MjAzMDc1NTB9.de4pZO_KLjASv5s7YAzsY6wydyG1LF8tPS-Mp0YK7BQ",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/current",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjZmMjZlODI5ZWE0YmJiMWYxOTg3OCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE4MDIyNzczLCJleHAiOjE3MTgwMjYzNzN9.5q_Gd9fJsfqcNXLsUYxptDj2SXCcehJOT_07m_551jQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"dabousi3@gmail.com\",\r\n    \"password\": \"saberdabousi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1122/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1122",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@gmail.com\",\r\n    \"password\": \"adminpassword123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1122/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1122",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verification email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/verify/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhYm91c2kzQGdtYWlsLmNvbSIsImlhdCI6MTcxODAyMjc2NiwiZXhwIjoxNzE4MDI2MzY2fQ.dLI9RSET3kOkfga9xw_zwp-hUb3Vu7lv9gTOBc2WqHY",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"verify",
+								"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhYm91c2kzQGdtYWlsLmNvbSIsImlhdCI6MTcxODAyMjc2NiwiZXhwIjoxNzE4MDI2MzY2fQ.dLI9RSET3kOkfga9xw_zwp-hUb3Vu7lv9gTOBc2WqHY"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1122/api/users/666160e71bb7674eeb811dfd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1122",
+							"path": [
+								"api",
+								"users",
+								"666160e71bb7674eeb811dfd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"saber\",\r\n    \"lastName\" : \"dabousi\", \r\n    \"email\" : \"dabousi3@gmail.com\",\r\n    \"password\" : \"saberdabousi\",\r\n    \"role\" : \"user\", \r\n    \"tel\":23456798\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/users/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjAzMzA2NDE4MjQ2ZDJiMzE1MWM3MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxODA5Nzk0MiwiZXhwIjoxNzE4MTAxNTQyfQ.9n197ivIpn2YTZ-AgPkIfjSrQPk2MRMJwvhsiTkOEdg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1122/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1122",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:1122",
+			"type": "string"
+		}
+	]
+}

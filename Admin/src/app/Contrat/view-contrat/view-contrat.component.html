@@ -1,0 +1,111 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Contract Overview" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row justify-content-center">
+  <div class="col-xxl-9">
+
+    <div class="card overflow-hidden" id="contract">
+      <div class="contract-effect-top position-absolute start-0">
+        <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 764 182" width="764" height="182">
+          <title>&lt;Group&gt;</title>
+          <g id="&lt;Group&gt;">
+            <g id="&lt;Group&gt;">
+              <path id="&lt;Path&gt;" style="fill: var(--tb-secondary-bg);" d="m-6.6 177.4c17.5 0.1 35.1 0 52.8-0.4 286.8-6.6 537.6-77.8 700.3-184.6h-753.1z" />
+            </g>
+            <g id="&lt;Group&gt;" style="opacity: .4">
+              <path id="&lt;Path&gt;" style="fill: var(--tb-light);" d="m-6.6 132.8c43.5 2.1 87.9 2.7 132.9 1.7 246.9-5.6 467.1-59.2 627.4-142.1h-760.3z" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="card-body z-1 position-relative">
+        <div class="d-sm-block d-md-flex">
+          <div class="flex-grow-1">
+            <img src="assets/images/logo-dark.png" class="card-logo-dark" alt="logo dark" height="28">
+            <img src="assets/images/logo-light.png" class="card-logo-light" alt="logo light" height="28">
+          </div>    
+          <div class="flex-shrink-0 mt-sm-0 mt-3">
+
+            <h6><span class="text-muted fw-normal">Legal Registration No:</span> <span id="registrationNumber" class="fw-semibold">{{Contract?.supplierId?.companyDetails.registrationNumber}}</span></h6>
+            <h6><span class="text-muted fw-normal">Supplier Name:</span> <span id="supplierid" class="fw-semibold">{{Contract?.supplierId?.name}}</span></h6>
+            <h6><span class="text-muted fw-normal">Website:</span> <span id="Website" class="fw-semibold">{{Contract?.supplierId?.companyDetails.website}}</span></h6>
+            <h6><span class="text-muted fw-normal">Contact NO:</span> <span id="phone" class="fw-semibold">{{Contract?.supplierId?.phone}}</span></h6>
+
+          </div>
+        </div>
+
+        <div class="mt-5 pt-4">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <!-- Title -->
+              <div class="mb-3">
+                <p class="text-muted mb-1 text-uppercase">Title:</p>
+                <h5 class="fs-md mb-0 fw-semibold" id="title">{{Contract?.title}}</h5>
+              </div>
+
+              <!-- Amount -->
+              <div class="mb-2 d-flex gap-2 align-items-baseline">
+                <p class="text-muted mb-1 text-uppercase">Amount:</p>
+                <h5 class="fs-md mb-0 fw-semibold">$<span id="amount">{{Contract?.montant}}</span></h5>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <!-- Start Date -->
+              <div class="mb-2 d-flex gap-2 align-items-baseline">
+                <p class="text-muted mb-1 text-uppercase">Start Date:</p>
+                <h5 class="fs-md mb-0 fw-semibold" id="start-date">{{Contract?.startDate}}</h5>
+              </div>
+
+              <!-- Due Date -->
+              <div class="mb-2 d-flex gap-2 align-items-baseline">
+                <p class="text-muted mb-1 text-uppercase">Due Date:</p>
+                <h5 class="fs-md mb-0 fw-semibold" id="due-date">{{Contract?.dueDate}}</h5>
+              </div>
+
+              <!-- Tag -->
+              <div class="mb-2 d-flex gap-2 align-items-baseline">
+                <p class="text-muted mb-1 text-uppercase">Tag:</p>
+                <h5 class="fs-md mb-0 fw-semibold" id="tag">{{Contract?.tag}}</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <!-- Description -->
+            <div class="mb-3">
+              <p class="text-muted mb-1 text-uppercase">Description:</p>
+              <p id="description" class="fs-md fw-semibold">{{Contract?.description}}</p>
+            </div>
+
+            <!-- Short Description -->
+            <div class="mb-3">
+              <p class="text-muted mb-1 text-uppercase">Short Description:</p>
+              <p id="short-description" class="fs-md fw-semibold">{{Contract?.shortDescription}}</p>
+            </div>
+
+            <!-- Contacts -->
+            <div class="mb-3">
+              <p class="text-muted mb-1 text-uppercase">Contacts:</p>
+              <p id="contacts" class="fs-md fw-semibold">
+                <ng-container *ngIf="Contract?.contacts?.length; else noContacts">
+                  <span *ngFor="let contact of Contract.contacts; let i = index">
+                    {{contact.email || 'No Email'}} ({{contact.position || 'No Position'}}){{i < Contract.contacts.length - 1 ? ', ' : ''}}
+                  </span>
+                </ng-container>
+                <ng-template #noContacts>No contacts available</ng-template>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end card-->
+      <div class="hstack gap-2 d-print-none mb-4">
+        <a href="javascript:window.print()" class="btn btn-success"><i class="ri-printer-line align-bottom me-1"></i> Print</a>
+        <button type="button" id="download-button" class="btn btn-primary"><i class="ri-download-2-line align-bottom me-1"></i> Download</button>
+      </div>
+  </div>
+  <!--end col-->
+</div>

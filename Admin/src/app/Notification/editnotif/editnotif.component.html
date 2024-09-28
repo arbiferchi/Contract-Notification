@@ -1,0 +1,113 @@
+<div class="card">
+    <div class="card-header">
+      <h4 class="card-title mb-0">Edit Notification</h4>
+    </div><!-- end card header -->
+    <div class="card-body form-steps">
+      <form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
+        <div class="text-center pt-3 pb-4 mb-1">
+          <h5>Configure Notification</h5>
+        </div>
+        <div id="custom-progress-bar" class="progress-nav mb-4">
+          <ng-stepper cdkStepper [linear]="true" class="cdksteppercontent nav nav-pills progress-bar-tab custom-nav">
+            <!-- Step 1 -->
+            <cdk-step [optional]="false">
+              <ng-template cdkStepLabel class="wizard-nav mb-5">
+                <button class="nav-link rounded-pill active" data-progressbar="custom-progress-bar" id="pills-gen-info-tab" data-bs-toggle="pill" data-bs-target="#pills-gen-info" type="button" role="tab" aria-controls="pills-gen-info" aria-selected="true">1</button>
+              </ng-template>
+              <div>
+                <div class="mb-4">
+                  <h5 class="mb-1">General Information</h5>
+                  <p class="text-muted">Fill all Information as below</p>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label class="form-label">Type</label>
+                      <select class="form-select" formControlName="type">
+                        <option value="email">Email</option>
+                        <option value="sms">SMS</option>
+                        <option value="push">Push Notification</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="mb-3">
+                      <label class="form-label" for="sendAt">Send At</label>
+                      <input type="datetime-local" formControlName="sendAt" class="form-control" id="sendAt">
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="title">Title</label>
+                  <input type="text" formControlName="title" class="form-control" id="title" placeholder="Enter Title">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="message">Message</label>
+                  <textarea formControlName="message" class="form-control" id="message" rows="3" placeholder="Enter Message"></textarea>
+                </div>
+                <div class="d-flex align-items-start gap-3 mt-4">
+                  <button type="button" class="btn btn-success btn-label right ms-auto nexttab" data-nexttab="pills-info-desc-tab" cdkStepperNext>
+                    <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i> Go to Step 2
+                  </button>
+                </div>
+              </div>
+            </cdk-step>
+  
+            <!-- Step 2 -->
+            <cdk-step [optional]="false">
+              <ng-template cdkStepLabel>
+                <button class="nav-link rounded-pill" data-progressbar="custom-progress-bar" id="pills-info-desc-tab" data-bs-toggle="pill" data-bs-target="#pills-info-desc" type="button" role="tab" aria-controls="pills-info-desc" aria-selected="false">2</button>
+              </ng-template>
+              <div>
+                <div class="mb-4">
+                  <h5 class="mb-1">Additional Information</h5>
+                  <p class="text-muted">Configure more settings</p>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="priority">Priority</label>
+                  <select formControlName="priority" class="form-control" id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="retries">Retries</label>
+                  <input type="number" formControlName="retries" class="form-control" id="retries" placeholder="Enter number of retries">
+                </div>
+                <div class="d-flex align-items-start gap-3 mt-4">
+                  <button type="button" class="btn btn-link text-decoration-none btn-label previestab" data-previous="pills-gen-info-tab" cdkStepperPrevious>
+                    <i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to Step 1
+                  </button>
+                  <button type="submit" class="btn btn-success btn-label right ms-auto">
+                    <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i> Submit
+                  </button>
+                </div>
+              </div>
+            </cdk-step>
+            <cdk-step [optional]="false">
+              <ng-template cdkStepLabel>
+                <button class="nav-link rounded-pill" data-progressbar="custom-progress-bar" id="pills-success-tab" data-bs-toggle="pill" data-bs-target="#pills-success" type="button" role="tab" aria-controls="pills-success" aria-selected="false">3</button>
+              </ng-template>
+              <div>
+                <div class="text-center">
+                  <div class="mb-4">
+                    <div class="avatar-md mx-auto">
+                      <div class="avatar-title bg-light text-success display-4 rounded-circle">
+                        <i class="ri-checkbox-circle-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <h5>Well Done!</h5>
+                  <p class="text-muted">Notification Updated Successfully</p>
+                </div>
+              </div>
+            </cdk-step>
+          </ng-stepper>
+        </div>
+      </form>
+    </div>
+    <!-- end card body -->
+  </div>
+  <!-- end card -->
+  

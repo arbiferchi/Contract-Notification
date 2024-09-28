@@ -1,0 +1,92 @@
+<div class="card">
+    <div class="card-header">
+      <h4 class="card-title mb-0">Edit Contract</h4>
+    </div>
+    <div class="card-body form-steps">
+      <form [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+        <div class="text-center pt-3 pb-4 mb-1">
+          <img src="assets/images/logo-dark.png" alt="" height="22">
+        </div>
+  
+        <ng-stepper #cdkStepper [linear]="true" class="step-arrow-nav wizard">
+          <cdk-step [optional]="false">
+            <ng-template cdkStepLabel>
+              <button class="nav-link done" type="button">General</button>
+            </ng-template>
+            <div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input type="text" class="form-control" id="title" formControlName="title" required>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="contract-description">Description</label>
+                <textarea class="form-control" id="description" formControlName="description" rows="3" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="contract-start-date">Start Date</label>
+                <input type="date" class="form-control" id="startDate" formControlName="startDate" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="contract-due-date">Due Date</label>
+                <input type="date" class="form-control" id="dueDate" formControlName="dueDate" required>
+              </div>
+              
+            </div>
+            <div class="d-flex align-items-start gap-3 mt-4">
+              <button type="button" class="btn btn-success btn-label right ms-auto nexttab" cdkStepperNext>
+                <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Go to more info
+              </button>
+            </div>
+          </cdk-step>
+  
+          <cdk-step [optional]="true">
+            <ng-template cdkStepLabel>
+              <button class="nav-link done" type="button">Additional Info</button>
+            </ng-template>
+            <div>
+              <div class="mb-3">
+                <label class="form-label" for="contract-tag">TAG</label>
+                <input type="text" class="form-control" id="tag" formControlName="tag">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="contract-short-description">Short Description</label>
+                <textarea class="form-control" id="shortDescription" formControlName="shortDescription" rows="2"></textarea>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3 mt-4">
+              <button type="button" class="btn btn-light btn-label previestab" cdkStepperPrevious>
+                <i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to General
+              </button>
+              <button type="submit" class="btn btn-success btn-label right ms-auto nexttab">
+                <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Submit
+              </button>
+            </div>
+          </cdk-step>
+  
+          <cdk-step [optional]="false">
+            <ng-template cdkStepLabel>
+              <button class="nav-link" type="button">Finish</button>
+            </ng-template>
+            <div>
+              <div class="text-center">
+                <div class="avatar-md mt-5 mb-4 mx-auto">
+                  <div class="avatar-title bg-light text-success display-4 rounded-circle">
+                    <i class="ri-checkbox-circle-fill"></i>
+                  </div>
+                </div>
+                <h5>Well Done!</h5>
+                <p class="text-muted">You have Successfully Edited the Contract</p>
+              </div>
+            </div>
+          </cdk-step>
+        </ng-stepper>
+      </form>
+    </div>
+    <!-- end card body -->
+  </div>
+  <!-- end card -->
+  

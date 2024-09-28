@@ -1,0 +1,111 @@
+<!-- Start Breadcrumbs -->
+<!-- End Breadcrumbs -->
+
+<div class="row">
+    <div class="col-xl-6"> <!-- Updated to match new layout -->
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0"></h4>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <apx-chart 
+                  [series]="zoomableTimeseriesChart.series" 
+                  [chart]="zoomableTimeseriesChart.chart" 
+                  [markers]="zoomableTimeseriesChart.markers" 
+                  [dataLabels]="zoomableTimeseriesChart.dataLabels" 
+                  [stroke]="zoomableTimeseriesChart.stroke" 
+                  [colors]="zoomableTimeseriesChart.colors" 
+                  [title]="zoomableTimeseriesChart.title" 
+                  [xaxis]="zoomableTimeseriesChart.xaxis" 
+                  [yaxis]="zoomableTimeseriesChart.yaxis" 
+                  [fill]="zoomableTimeseriesChart.fill" 
+                  dir="ltr">
+                </apx-chart>
+            </div><!-- end card-body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+    <!-- Contracts by Supplier Chart -->
+<!-- Contracts by Supplier Chart -->
+<div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title mb-0">Contracts by Supplier</h4>
+      </div><!-- end card header -->
+  
+      <div class="card-body">
+        <apx-chart 
+          [series]="contractsBySupplierChart.series" 
+          [chart]="contractsBySupplierChart.chart" 
+          [dataLabels]="contractsBySupplierChart.dataLabels" 
+          [stroke]="contractsBySupplierChart.stroke" 
+          [colors]="contractsBySupplierChart.colors" 
+          [title]="contractsBySupplierChart.title" 
+          [xaxis]="contractsBySupplierChart.xaxis" 
+          [yaxis]="contractsBySupplierChart.yaxis" 
+          [fill]="contractsBySupplierChart.fill" 
+          dir="ltr">
+        </apx-chart>
+      </div><!-- end card-body -->
+    </div><!-- end card -->
+  </div><!-- end col -->
+  
+</div><!-- end row -->
+<div class="row">
+    <div class="col-xl-6"> <!-- Updated to match new layout -->
+
+    <div class="card">
+    <div class="card-header d-flex">
+      <h5 class="card-title flex-grow-1 mb-0">Upcoming Schedule</h5>
+      <div class="flex-shrink-0">
+        <a href="javascript:void(0);" class="btn btn-subtle-info btn-sm">View More <i class="ph-caret-right align-middle"></i></a>
+      </div>
+    </div>
+    <div class="card-body vstack gap-2">
+      <div *ngFor="let notification of upcomingNotifications" class="d-flex bg-body-secondary rounded">
+        <div class="flex-shrink-0 w-md py-2 px-3 text-center border-end">
+          <p class="mb-1 text-muted fs-sm">{{ notification.sendAt | date:'EEE, dd MMM' }}</p>
+          <h6 class="mb-0">{{ notification.sendAt | date:'HH:mm' }}</h6>
+        </div>
+        <div class="flex-grow-1 px-3 py-2 overflow-hidden">
+          <h6>{{ notification.title }}</h6>
+          <p class="text-muted fs-sm text-truncate mb-0">{{ notification.message }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end card -->
+<div class="row">
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title mb-0">Area Chart - Datetime X - Axis Chart</h4>
+        </div><!-- end card header -->
+  
+        <div class="card-body">
+          <div>
+            <div class="toolbar d-flex align-items-start justify-content-center flex-wrap gap-2">
+              <button type="button" class="btn btn-soft-primary timeline-btn btn-sm" id="one_month" (click)="loadNotificationStats('month')">
+                1M
+              </button>
+              <button type="button" class="btn btn-soft-primary timeline-btn btn-sm" id="six_months" (click)="loadNotificationStats('week')">
+                6M
+              </button>
+              <button type="button" class="btn btn-soft-primary timeline-btn btn-sm active" id="one_year" (click)="loadNotificationStats('day')">
+                1Y
+              </button>
+              <button type="button" class="btn btn-soft-primary timeline-btn btn-sm" id="all" (click)="loadNotificationStats('month')">
+                ALL
+              </button>
+            </div>
+            <apx-chart #chart [series]="notificationStatsChart.series" [chart]="notificationStatsChart.chart" [colors]="notificationStatsChart.colors" [yaxis]="notificationStatsChart.yaxis" [dataLabels]="notificationStatsChart.dataLabels" [markers]="notificationStatsChart.markers" [stroke]="notificationStatsChart.stroke" [grid]="notificationStatsChart.grid" [xaxis]="notificationStatsChart.xaxis"   [colors]="notificationStatsChart.colors" dir="ltr"></apx-chart>
+          </div><!-- end card-body -->
+        </div><!-- end card -->
+      </div>
+      <!-- end col -->
+    </div>
+    <!-- end row -->
+  </div>
+  
+</div>

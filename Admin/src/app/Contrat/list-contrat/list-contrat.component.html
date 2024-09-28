@@ -1,0 +1,225 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="Contract List" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!-- End Breadcrumbs -->
+
+<div class="row" id="contractList">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center g-2">
+          <div class="col-xl-2 col-md-3">
+            <div class="search-box">
+              <input
+                type="text"
+                class="form-control search"
+                placeholder="Search for contract, date, client or something..."
+                [(ngModel)]="searchTerm"
+                (ngModelChange)="performSearch()"
+              />
+              <i class="ri-search-line search-icon"></i>
+            </div>
+          </div>
+          <div class="col-md-auto ms-auto">
+            <div class="hstack gap-2 mt-2 mt-md-0">
+              <button class="btn btn-subtle-info">
+                <i class="bi bi-funnel"></i>
+              </button>
+              <button
+                class="btn btn-subtle-danger d-none"
+                id="remove-actions"
+                (click)="deleteData($event)"
+              >
+                <i class="ri-delete-bin-2-line"></i>
+              </button>
+              <a routerLink="/Contrat/AjoutContrat" class="btn btn-secondary">
+                <i class="bi bi-plus-circle align-baseline me-1"></i>
+                Add Contract
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body mt-3">
+        <div class="table-responsive table-card">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    type="checkbox"
+                    [checked]="masterSelected"
+                    (change)="checkUncheckAll($event)"
+                  />
+                </th>
+                <th (click)="onSort('title')">Title</th>
+                <th (click)="onSort('description')">Description</th>
+                <th (click)="onSort('startDate')">Start Date</th>
+                <th (click)="onSort('dueDate')">Due Date</th>
+                <th (click)="onSort('status')">Status</th>
+                <th>Supplier</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let contract of filteredContracts">
+                <td>
+                  <input
+                    type="checkbox"
+                    [checked]="contract.isSelected"
+                    (change)="onSelectContract(contract)"
+                  />
+                </td>
+             
+                <td>{{ contract.title }}</td>
+                <td>{{ contract.description }}</td>
+                <td>{{ contract.startDate | date }}</td>
+                <td>{{ contract.dueDate | date }}</td>
+                <td>{{ contract.status }}</td>
+                <td>
+                    <a href="javascript:void(0);" (click)="viewSupplierDetails(contract.supplier)">
+                      {{ contract.supplier?.name || 'Unknown Supplier' }}
+                    </a>
+                  </td>
+                  
+                  
+                <td>
+                  
+               
+
+
+                  <ul class="d-flex gap-2 list-unstyled mb-0">
+                    <a
+                    routerLink="/Contrat/View/{{ contract._id }}"
+                    class="btn btn-subtle-primary btn-icon btn-sm"
+                  >
+                    <i class="ph-eye"></i>
+                  </a>
+
+                    <li>
+                      <a href="javascript:void(0);"  routerLink="/Contrat/edit/{{ contract._id }}" class="btn btn-subtle-secondary btn-icon btn-sm" >
+                        <i class="ph-pencil"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0);" data-bs-toggle="modal" 
+                        (click)="removeData(contract._id)"
+                        class="btn btn-subtle-danger btn-icon btn-sm remove-item-btn">
+                      
+                        <i class="ph-trash"></i>
+                      </a>
+                    </li>
+                        <li>
+                          <a href="javascript:void(0);"  routerLink="/notif/Ajoutnotif/{{ contract._id }}" class="btn btn-subtle-secondary btn-icon btn-sm" >
+                            <i class=" ri-notification-2-line"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);"  routerLink="/doc/upload/{{ contract._id }}" class="btn btn-subtle-secondary btn-icon btn-sm" >
+                            <i class="  ri-folder-upload-fill"></i>
+                          </a>
+                        </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+      </div>
+      <pagination
+      [totalItems]="filteredContracts.length"
+      [totalItems]="ContractList.length"
+      [itemsPerPage]="5"
+      (pageChanged)="pageChanged($event)"
+    ></pagination>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div
+  class="modal fade"
+  bsModal #deleteRecordModal="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteRecordModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteRecordModalLabel">Confirm Delete</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this contract?
+      </div>
+      <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="deleteRecordModal?.hide()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="confirmDelete()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Supplier Details Modal -->
+<div
+  class="modal fade"
+  bsModal #supplierModal="bs-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="supplierModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="supplierModalLabel">Supplier Details</h5>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="supplierModal?.hide()"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Display details for all types -->
+        <p><strong>Name:</strong> {{ selectedSupplier?.name || 'N/A' }}</p>
+        <p><strong>Email:</strong> {{ selectedSupplier?.email || 'N/A' }}</p>
+        <p><strong>Phone:</strong> {{ selectedSupplier?.phone || 'N/A' }}</p>
+        <p><strong>Address:</strong> {{ selectedSupplier?.address || 'N/A' }}</p>
+
+        <!-- Conditionally display company details -->
+        <div *ngIf="selectedSupplier && isSociete(selectedSupplier)">
+          <p><strong>Company Details:</strong></p>
+          <h3>Contacts:</h3>
+          <ul>
+            <li *ngFor="let contact of selectedContacts">
+              <p><strong>Email:</strong> {{ contact?.email || 'N/A' }}</p>
+              <p><strong>Phone:</strong> {{ contact?.phone || 'N/A' }}</p>
+              <p><strong>Address:</strong> {{ contact?.address || 'N/A' }}</p>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Conditionally display details for individual contact -->
+        <div *ngIf="selectedSupplier && isContact(selectedSupplier)">
+          <p><strong>Contact Details:</strong></p>
+          <p><strong>Position:</strong> {{ selectedSupplier?.contactDetails?.position }}</p>
+          <p><strong>Despartment:</strong> {{ selectedSupplier?.contactDetails?.department || 'N/A' }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="supplierModal?.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
